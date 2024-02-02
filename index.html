@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="weather.css" />
+    <link rel="stylesheet" href="newweather.css" />
   </head>
   <body>
     <div class="container">
       <header>
-        <form>
+        <form id="submit-form">
           <input
             type="text"
             placeholder="Enter a city..."
             class="form-text-input"
+            id="form-submit-input"
           />
           <input type="submit" value="Search" class="form-submit-button" />
         </form>
@@ -23,7 +24,7 @@
         <main>
           <div class="weather-app">
             <div class="weather-app-details">
-              <h1 class="weather-app-city">Pretoria</h1>
+              <h1 class="weather-app-city" id="city-name">Pretoria</h1>
               <p class="weather-app-data">
                 Wednesday 11:03, overcast clouds <br />
                 Humidity: <span class="weather-data-humidity">81%</span>,
@@ -39,14 +40,13 @@
         </main>
       </body>
       <footer>
-        <p>
-          This project was coded by
-          <a href="#" target="_blank">Anele Masuku</a>
-          , it is
-          <a href="#" target="_blank">open-soured on GitHub</a> and hosted on
-          <a href="#" target="_blank">Netlify</a>
-        </p>
+        This project was coded by
+        <a href="#" target="_blank">Anele Masuku</a>
+        , it is
+        <a href="#" target="_blank">open-soured on GitHub</a> and hosted on
+        <a href="#" target="_blank">Netlify</a>
       </footer>
     </div>
   </body>
+  <script src="newweather.js"></script>
 </html>

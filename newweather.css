@@ -38,11 +38,13 @@ main {
 }
 .weather-app-city {
   margin: 0;
+  line-height: 48px;
 }
 
 .weather-app-data {
   color: rgba(128, 128, 128, 0.733);
   font-weight: 600;
+  line-height: 24px;
 }
 .weather-app-data span {
   color: rgb(88, 164, 214);
