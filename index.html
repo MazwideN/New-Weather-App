@@ -25,17 +25,19 @@
         <main>
           <div class="weather-app">
             <div class="weather-app-details">
-              <h1 class="weather-app-city" id="city-name">Pretoria</h1>
+              <h1 class="weather-app-city" id="city-name"></h1>
               <p class="weather-app-data">
-                Wednesday 11:03, overcast clouds <br />
-                Humidity: <span class="weather-data-humidity">81%</span>,
-                Wind:<span class="weather-app-wind">1.54km/h</span>
+                Wednesday 11:03, <span id="description"></span>
+                <br />
+                Humidity:
+                <span class="weather-data-humidity" id="humidity"></span>,
+                Wind:<span class="weather-app-wind" id="wind"></span>
               </p>
             </div>
-            <div class="weather-app-temperature">
-              <div class="weather-app-icon">❄️</div>
-              <div class="weather-app-temp">6</div>
-              <div class="weather-app-units">°C</div>
+            <div class="weather-app-temperature" id="temperature">
+              <div class="weather-app-icon" id="icon">❄️</div>
+              <div class="weather-app-temp" id="temp">6</div>
+              <div class="weather-app-units" id="units">°C</div>
             </div>
           </div>
         </main>
