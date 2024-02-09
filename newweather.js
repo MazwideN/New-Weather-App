@@ -13,7 +13,8 @@ function displayTemperature(response) {
   let date = new Date(response.data.time * 1000);
   let timeElement = document.querySelector("#time");
   timeElement.innerHTML = displayDate(date);
-  console.log(response.data);
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img src = "${response.data.condition.icon_url}" />`;
 }
 function displayDate(date) {
   let minutes = date.getMinutes();

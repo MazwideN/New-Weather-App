@@ -46,9 +46,17 @@ main {
   font-weight: 600;
   line-height: 24px;
 }
-.weather-app-data span {
+.weather-app-time {
+  color: rgba(128, 128, 128, 0.733);
+}
+.weather-app-description {
+  color: rgba(128, 128, 128, 0.733);
+}
+
+.weather-app-data {
   color: rgb(88, 164, 214);
 }
+
 .weather-app {
   display: flex;
   justify-content: space-between;
@@ -58,8 +66,7 @@ main {
   display: flex;
 }
 .weather-app-icon {
-  font-size: 40px;
-  margin-top: 25px;
+  width: 88px;
   margin-right: 8px;
 }
 .weather-app-temp {
@@ -68,6 +75,7 @@ main {
 }
 .weather-app-units {
   margin-top: 15px;
+  font-weight: 600;
 }
 footer {
   color: grey;
