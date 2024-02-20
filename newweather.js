@@ -15,6 +15,8 @@ function displayTemperature(response) {
   timeElement.innerHTML = displayDate(date);
   let iconElement = document.querySelector("#icon");
   iconElement.innerHTML = `<img src = "${response.data.condition.icon_url}" />`;
+
+  fetchForecast(response.data);
 }
 function displayDate(date) {
   let minutes = date.getMinutes();
@@ -47,9 +49,14 @@ function displayCity(event) {
 
   searchCity(submitElement.value);
 }
+function fetchForecast(city) {
+  let apiKey = "9t5ad1f99b16o30764016f75c42ec833";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
-function displayForecast() {
-  let days = ["Mon", "Tue", "Wed"];
+function displayForecast(response) {
+  let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
   let forecastHtml = "";
 
   days.forEach((day) => {
@@ -60,15 +67,16 @@ function displayForecast() {
     <div class="weather-forecast-icon">🌤️</div>
     <div class="weather-forecast-temperatures">
     <div class="weather-forecast-min-temperature">12º </div>
-    <div class="weather-forecast-max-temperature">28º</div>
+    <div class="weather-forecast-max-temperature"> 
+    <strong>28º</strong></div>
     </div>
     </div>`;
   });
-  let weatherForecast = document.querySelector("#daily-forecast");
-  weatherForecast.innerHTML = forecastHtml;
+
+  let forecastElement = document.querySelector("#daily-forecast");
+  forecastElement.innerHTML = forecastHtml;
 }
 
 let formElement = document.querySelector("#submit-form");
 formElement.addEventListener("submit", displayCity);
 searchCity("Pretoria");
-displayForecast();
