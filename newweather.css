@@ -77,6 +77,17 @@ main {
   margin-top: 15px;
   font-weight: 600;
 }
+
+.weather-forecast {
+  justify-content: space-around;
+  margin-top: 20px;
+  align-items: center;
+}
+.weather-forecast-temperatures {
+  display: flex;
+  text-align: center;
+}
+
 footer {
   color: grey;
   font-size: 13px;

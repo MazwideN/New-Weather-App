@@ -40,6 +40,7 @@ function searchCity(cityvalue) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityvalue}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
+
 function displayCity(event) {
   event.preventDefault();
   let submitElement = document.querySelector("#form-submit-input");
@@ -47,6 +48,27 @@ function displayCity(event) {
   searchCity(submitElement.value);
 }
 
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed"];
+  let forecastHtml = "";
+
+  days.forEach((day) => {
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast">
+    <div class="weather-forecast-day">${day}</div>
+    <div class="weather-forecast-icon">🌤️</div>
+    <div class="weather-forecast-temperatures">
+    <div class="weather-forecast-min-temperature">12º </div>
+    <div class="weather-forecast-max-temperature">28º</div>
+    </div>
+    </div>`;
+  });
+  let weatherForecast = document.querySelector("#daily-forecast");
+  weatherForecast.innerHTML = forecastHtml;
+}
+
 let formElement = document.querySelector("#submit-form");
 formElement.addEventListener("submit", displayCity);
-searchCity("Pretoria"); //this city will be applied when the page is loaded
+searchCity("Pretoria");
+displayForecast();
