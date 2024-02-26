@@ -8,7 +8,7 @@ function displayTemperature(response) {
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.condition.description;
-  let cityElement = document.querySelector("#city-name");
+  let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let date = new Date(response.data.time * 1000);
   let timeElement = document.querySelector("#time");
@@ -16,7 +16,7 @@ function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.innerHTML = `<img src = "${response.data.condition.icon_url}" />`;
 
-  fetchForecast(response.data);
+  fetchForecast(response.data.city);
 }
 function displayDate(date) {
   let minutes = date.getMinutes();
@@ -49,6 +49,14 @@ function displayCity(event) {
 
   searchCity(submitElement.value);
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function fetchForecast(city) {
   let apiKey = "9t5ad1f99b16o30764016f75c42ec833";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
@@ -56,21 +64,26 @@ function fetchForecast(city) {
 }
 
 function displayForecast(response) {
-  let days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
   let forecastHtml = "";
 
-  days.forEach((day) => {
-    forecastHtml =
-      forecastHtml +
-      `<div class="weather-forecast">
-    <div class="weather-forecast-day">${day}</div>
-    <div class="weather-forecast-icon">🌤️</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `<div class="weather-forecast">
+    <div class="weather-forecast-day">${formatDay(day.time)}</div>
+    <div >
+    <img src ="${day.condition.icon_url}" class="weather-forecast-icon"/>
+    </div>
     <div class="weather-forecast-temperatures">
-    <div class="weather-forecast-min-temperature">12º </div>
+    <div class="weather-forecast-min-temperature">${Math.round(
+      day.temperature.minimum
+    )}º </div>
     <div class="weather-forecast-max-temperature"> 
-    <strong>28º</strong></div>
+    <strong>${Math.round(day.temperature.maximum)}º</strong></div>
     </div>
     </div>`;
+    }
   });
 
   let forecastElement = document.querySelector("#daily-forecast");
